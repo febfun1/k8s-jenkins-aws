@@ -13,9 +13,9 @@ node {
 
     stage("Docker build"){
         sh 'docker version'
-        sh 'docker build -t olu-docker-demo .'
+        sh 'docker build -t febfun/olu-docker-demo .'
         sh 'docker image list'
-        sh 'docker tag olu-docker-demo ajileye/olu-docker-demo:olu-docker-demo'
+        sh 'docker tag olu-docker-demo febfun/olu-docker-demo:olu-docker-demo'
     }
 
     withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
