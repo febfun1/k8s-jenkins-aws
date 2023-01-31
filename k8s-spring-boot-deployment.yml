@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: springboot
-          image: ajileye/olu-docker-demo:jhooq-docker-demo
+          image: febfun/olu-docker-demo:olu-docker-demo
           ports:
             - containerPort: 8080
           env:
