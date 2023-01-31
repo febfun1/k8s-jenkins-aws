@@ -2,7 +2,7 @@ node {
 
     stage("Git Clone"){
 
-        git credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/rahulwagh/k8s-jenkins-aws'
+        git credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/febfun1/k8s-jenkins-aws.git'
     }
 
      stage('Gradle Build') {
