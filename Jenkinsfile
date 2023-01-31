@@ -18,8 +18,8 @@ node {
         sh 'docker tag olu-docker-demo ajileye/olu-docker-demo:olu-docker-demo'
     }
 
-    withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
-        sh 'docker login -u febfun -p $PASSWORD'
+    withCredentials([string(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+        sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
     }
 
     stage("Push Image to Docker Hub"){
