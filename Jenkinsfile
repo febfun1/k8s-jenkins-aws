@@ -2,7 +2,7 @@ node {
 
     stage("Git Clone"){
 
-        git url: 'https://github.com/febfun1/k8s-jenkins-aws.git'
+      git 'https://github.com/febfun1/k8s-jenkins-aws.git'
     }
 
     stage('Gradle Build') {
