@@ -2,12 +2,12 @@ node {
 
     stage("Git Clone"){
 
-      git 'https://github.com/febfun1/k8s-jenkins-aws.git'
+        git credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/rahulwagh/k8s-jenkins-aws'
     }
 
-    stage('Gradle Build') {
+     stage('Gradle Build') {
 
-        sh './gradlew build'
+       sh './gradlew build'
 
     }
 
@@ -15,7 +15,7 @@ node {
         sh 'docker version'
         sh 'docker build -t olu-docker-demo .'
         sh 'docker image list'
-        sh 'docker tag ajileye-docker-demo ajileye/olu-docker-demo:olu-docker-demo'
+        sh 'docker tag olu-docker-demo ajileye/olu-docker-demo:olu-docker-demo'
     }
 
     withCredentials([string(credentialsId: 'dockerhub', variable: 'PASSWORD')]) {
