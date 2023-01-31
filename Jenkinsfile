@@ -23,7 +23,7 @@ node {
     }
 
     stage("Push Image to Docker Hub"){
-        sh 'docker push  ajileye/olu-docker-demo:jhooq-docker-demo'
+        sh 'docker push  ajileye/olu-docker-demo:olu-docker-demo'
     }
     
     stage("kubernetes deployment"){
