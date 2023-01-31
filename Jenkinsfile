@@ -12,15 +12,18 @@ node {
     }
 
     stage("Docker build"){
-        sh 'docker build -t olu-docker-demo:${BUILD_NUMBER} .'
+        sh 'docker version'
+        sh 'docker build -t olu-docker-demo .'
+        sh 'docker image list'
+        sh 'docker tag olu-docker-demo ajileye/olu-docker-demo:olu-docker-demo'
     }
-    
-    stage("Push"){
-       
-    withCredentials([credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-        sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-        
-        sh 'docker push olu-docker-demo:$BUILD_NUMBER'
+
+    withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
+        sh 'docker login -u febfun -p $PASSWORD'
+    }
+
+    stage("Push Image to Docker Hub"){
+        sh 'docker push  ajileye/olu-docker-demo:jhooq-docker-demo'
     }
     
     stage("kubernetes deployment"){
