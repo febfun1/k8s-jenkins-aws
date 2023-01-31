@@ -18,7 +18,7 @@ node {
         sh 'docker tag olu-docker-demo ajileye/olu-docker-demo:olu-docker-demo'
     }
 
-    withCredentials([string(credentialsId: 'dockerhub', variable: 'PASSWORD')]) {
+    withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
         sh 'docker login -u febfun1 -p $PASSWORD'
     }
 
