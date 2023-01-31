@@ -2,12 +2,12 @@ node {
 
     stage("Git Clone"){
 
-        git credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/febfun1/k8s-jenkins-aws.git'
+        git url: 'https://github.com/febfun1/k8s-jenkins-aws.git'
     }
 
-     stage('Gradle Build') {
+    stage('Gradle Build') {
 
-       sh './gradlew build'
+        sh './gradlew build'
 
     }
 
