@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: springboot
-          image: febfun/docker-demo:docker-demo
+          image: febfun/app-deploy:app-deploy
           ports:
             - containerPort: 8080
           env:
