@@ -13,9 +13,9 @@ node {
 
     stage("Docker build"){
         sh 'docker version'
-        sh 'docker build -t febfun/olu-docker-demo .'
+        sh 'docker build -t febfun/docker-demo .'
         sh 'docker image list'
-        sh 'docker tag olu-docker-demo febfun/olu-docker-demo:olu-docker-demo'
+        sh 'docker tag docker-demo febfun/docker-demo:docker-demo'
     }
 
     withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
@@ -23,7 +23,7 @@ node {
     }
 
     stage("Push Image to Docker Hub"){
-        sh 'docker push  febfun/olu-docker-demo:olu-docker-demo'
+        sh 'docker push  febfun/docker-demo:docker-demo'
     }
     
     stage("kubernetes deployment"){
