@@ -15,7 +15,7 @@ node {
         sh 'docker version'
         sh 'docker build -t febfun/app-deploy .'
         sh 'docker image list'
-        sh 'docker tag app-deploy febfun/app-deploy:app-deploy'
+        sh 'docker tag febfun/app-deploy febfun/app-deploy:app-deploy'
     }
 
     withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
