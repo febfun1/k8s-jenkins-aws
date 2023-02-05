@@ -13,9 +13,9 @@ node {
 
     stage("Docker build"){
         sh 'docker version'
-        sh 'docker build -t febfun/app-deploy .'
+        sh 'docker build -t febfun/app-deploy1 .'
         sh 'docker image list'
-        sh 'docker tag febfun/app-deploy febfun/app-deploy:app-deploy'
+        sh 'docker tag febfun/app-deploy1 febfun/app-deploy1:app-deploy'
     }
 
     withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
@@ -23,7 +23,7 @@ node {
     }
 
     stage("Push Image to Docker Hub"){
-        sh 'docker push  febfun/app-deploy:app-deploy'
+        sh 'docker push  febfun/app-deploy1:app-deploy'
     }
     
     stage("kubernetes deployment"){
